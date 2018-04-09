@@ -1,14 +1,19 @@
 CFLAGS=-Wall -g
 CC=gcc
-OBJ=ex1.o
+EXERCISE=ex1 ex3
 
 %.o: %.c
 	$(CC) -c -o $@ $< $(CFLAGS)
 
-ex1: $(OBJ) 
+ex1: ex1.o 
 	$(CC) -o $@ $^ $(CFLAGS) 
+
+ex3: ex3.o 
+	$(CC) -o $@ $^ $(CFLAGS)
+
+all: $(EXERCISE) 
 
 .PHONY: clean
 
 clean:
-	rm -f ex1 $(OBJ)
+	rm -f $(EXERCISE) *.o
